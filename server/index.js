@@ -31,3 +31,18 @@ mongoose.connect(process.env.MONGO_CONN)
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   
 
+// CODE FROM CHATGPT STEP 3 ADD A MONGO DB MODEL
+//bascially do CRUD here
+
+// const Letter = require("./models/Letter");
+
+// app.post("/letters", async (req, res) => {
+//   try {
+//     const { senderName, message } = req.body;
+//     const newLetter = new Letter({ senderName, message });
+//     await newLetter.save();
+//     res.status(201).json({ message: "Letter saved successfully!" });
+//   } catch (err) {
+//     res.status(500).json({ error: "Failed to save letter" });
+//   }
+// });
