@@ -5,7 +5,8 @@ import App from './App.jsx'
 import Landing from './Components/Landing.jsx'
 import Homepage from './Components/Homepage.jsx'
 import About from './Components/About.jsx'
-
+import Gallery from './Components/Gallery.jsx'
+import LetterForm from './Components/LetterForm.jsx'
 
 const routes = [
   { 
@@ -23,7 +24,16 @@ const routes = [
       {
         path: "about",
         element: <About />
+      },
+      {
+        path: "gallery",
+        element: <Gallery />
+      },
+      {
+          path: "letters",
+          element: <LetterForm/>
       }
+
     ]
   }
 ]
@@ -33,17 +43,11 @@ createRoot(document.getElementById('root')).render(<RouterProvider router={route
 
 
 //ADDITIONAL ROUTES TO ADD
-      // ,{
-      //   path: "gallery",
-      //   element: <Gallery />
-      // },
+      
       // {
       //   path: "gallery/:id",
       //   element: <Artpieces />
       // },
-      // {
-      //   path: "letters",
-      //   element: <LetterForm/>
-      // }
+
 
 //Routes for admin? Receiving letters page. 
