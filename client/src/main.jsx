@@ -2,9 +2,9 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import Homepage from './components/Homepage.jsx'
 import Landing from './components/Landing.jsx'
-import About from './components/About.jsx'
+import Homepage from './components/Homepage.jsx'
+// import About from './components/About.jsx'
 
 
 const routes = [
@@ -19,11 +19,11 @@ const routes = [
       {
         path: "home",
         element: <Homepage />
-      },
-      {
-        path: "about",
-        element: <About />
       }
+      // ,{
+      //   path: "about",
+      //   element: <About />
+      // }
     ]
   }
 ]
