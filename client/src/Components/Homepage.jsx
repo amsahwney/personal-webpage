@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Newsletter from './Newsletter'
 
 function Homepage() {
   return (
@@ -10,6 +11,8 @@ function Homepage() {
         <button> <Link to="../gallery">Gallery</Link> </button>
         <br/>
         <button> <Link to="../letters">Don't Touch</Link> </button>
+
+        <Newsletter />
     </div>
   )
 }

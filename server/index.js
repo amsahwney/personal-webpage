@@ -7,6 +7,7 @@ const bodyParser = require("body-parser")
 const nodemailer = require("nodemailer")
 const moment = require("moment")
 const crypto = require("crypto")
+const cors = require('cors')
 
 dotenv.config(); //command to load contents of .env
 
@@ -16,6 +17,11 @@ const app = express(); //initializes express ('creates an instance of the expres
 app.use(express.json()); // Parse JSON requests - allows your server to understanf data sent in JSON format from the front end
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST'],
+  credentials: true
+}))
 
 // CONNECT TO MONGODB 
 // (+check and log is the connection is successful or fails)
@@ -71,7 +77,7 @@ app.post("/subscribe", async (req, res) => {
             Just checking that you gave me a real email :) \n
             Please confirm by clicking the link below: \n
             ${confirmationLink} \n\n
-            ty,
+            Ty,
             Unserious <3`
     }
 
