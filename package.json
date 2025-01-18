@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "lottie-web": "^5.12.2",
+    "react-adobe-animate": "^3.1.0"
   }
 }

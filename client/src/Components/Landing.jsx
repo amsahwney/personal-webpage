@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import BlinkySVG from "./BlinkySVG"
 
 function Landing() {
     const [message, setMessage] = useState("y or n")
@@ -21,6 +22,7 @@ function Landing() {
   return (
     <div>   
         <h2> hello, would you like to enter my world?</h2>
+            <div> <BlinkySVG/> </div>
         <h2>{message}</h2>
     </div>
   )
