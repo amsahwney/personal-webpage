@@ -8,6 +8,7 @@ const nodemailer = require("nodemailer")
 const moment = require("moment")
 const crypto = require("crypto")
 const cors = require('cors')
+const path = require('path')
 
 dotenv.config(); //command to load contents of .env
 
@@ -23,18 +24,19 @@ app.use(cors({
   credentials: true
 }))
 
+app.use(express.static(path.join(__dirname, '../client/dist'))) 
+
 // CONNECT TO MONGODB 
 // (+check and log is the connection is successful or fails)
 mongoose.connect(process.env.MONGO_CONN)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-
 // SERVER HOMEBASE 
 // (just to check if it's working)
-  app.get("/", (req, res) => { // res object is used to send response back to client, req object hold data about the incoming request
-    res.send("Hello from the server!");
-  });
+  // app.get("/", (req, res) => { // res object is used to send response back to client, req object hold data about the incoming request
+  //   res.send("Hello from the server!");
+  // });
   //example uses of req
   //req.query.var (gets var from the url) 
   //req.body (access data from request for example someone sends a form)
@@ -116,6 +118,19 @@ app.get('/confirm', async (req, res) => {
     res.status(400). send(error.message)
   }
 })
+
+// // go to client and grab the index.html that's there
+app.use('/*', (req, res, next) => {
+  if (/(.ico|.js|.css|.jpg|.png|.map|.svg)$/i.test(req.path)) {
+      next();
+  } else {
+      res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+      res.header('Expires', '-1')
+      res.header('Pragma', 'no-cache')
+      res.sendFile(path.join(__dirname, "../client/dist/index.html"))
+  }
+})
+
 
 // RUN SERVER
 const PORT = process.env.PORT || 5555; //this first checks is a port is specified in the .env file and uses that, otherwise it uses the default 5000
